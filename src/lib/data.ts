@@ -1,19 +1,19 @@
 export const siteConfig = {
   name: "Tushar Mishra",
-  role: "Backend / Cloud / Infrastructure Engineer",
-  tagline: "Building scalable backend systems, cloud infrastructure, and AI-powered products",
+  role: "Computer Science Graduate · University of Georgia",
+  tagline: "Software Engineer. Backend systems, cloud platforms, and reliability.",
   description:
-    "I architect systems that handle scale — from distributed APIs to cloud-native deployments and AI-powered products.",
-  email: "your@email.com", // TODO: update
-  github: "https://github.com/tusharmishra", // TODO: update
-  linkedin: "https://linkedin.com/in/tusharmishra", // TODO: update
-  resume: "/resume.pdf", // TODO: add resume to /public
+    "I build cloud-native, event-driven systems and internal platforms with a focus on observability, performance, and production reliability.",
+  email: "mtushar2508@gmail.com",
+  github: "https://github.com/MenaceHecker",
+  linkedin: "https://linkedin.com/in/tushar-mishra-uga",
+  resume: "/resume.pdf",
 };
 
 export const stats = [
-  { value: "4+", label: "featured projects" },
-  { value: "5+", label: "tech domains" },
-  { value: "10+", label: "cloud & AI tools" },
+  { value: "7+", label: "featured projects" },
+  { value: "6+", label: "tech domains" },
+  { value: "15+", label: "technologies" },
   { value: "∞", label: "systems to build" },
 ];
 
@@ -33,50 +33,68 @@ export const projects: Project[] = [
   {
     id: "nexus",
     name: "Nexus",
-    description:
-      "Scalable backend infrastructure — distributed systems architecture for high-throughput, fault-tolerant environments.",
-    longDescription:
-      "A distributed backend platform designed from the ground up for scale. Features include async task queuing, horizontal auto-scaling, circuit-breaker patterns, and observability dashboards.",
-    metric: "Core Platform",
-    tags: ["Python", "AWS", "PostgreSQL", "Docker", "Redis"],
-    github: "https://github.com/tusharmishra/nexus", // TODO: update
-    demo: "", // TODO: update
+    description: "Distributed observability stack",
+    longDescription: "A comprehensive distributed observability platform that provides monitoring, logging, and visualization capabilities for complex systems.",
+    metric: "Observability Platform",
+    tags: ["Python", "Prometheus", "Grafana", "ELK", "Postgres"],
+    github: "https://github.com/MenaceHecker/nexus",
     featured: true,
   },
   {
-    id: "huntai",
-    name: "HuntAI",
-    description:
-      "AI-powered job hunting platform. Intelligent matching, automated outreach pipelines, and real-time market signal processing.",
-    longDescription:
-      "End-to-end AI job search assistant. Parses job postings with LLMs, matches against a skill profile, automates tailored outreach emails, and tracks application pipelines.",
+    id: "inboxiq",
+    name: "InboxIQ",
+    description: "Intelligent email organizer",
+    longDescription: "An AI-powered email management system that intelligently categorizes, prioritizes, and organizes emails for better productivity.",
     metric: "AI Product",
-    tags: ["FastAPI", "LLM", "Celery", "AWS Lambda", "PostgreSQL"],
-    github: "https://github.com/tusharmishra/huntai", // TODO: update
-    demo: "", // TODO: update
+    tags: ["Next.js", "TypeScript", "Prisma", "AWS"],
+    github: "https://github.com/MenaceHecker/inboxiq",
+    featured: true,
   },
   {
-    id: "crowdlens",
-    name: "CrowdLens",
-    description:
-      "Real-time crowd analytics. Ingestion pipeline + ML inference + cloud-native deployment at scale.",
-    longDescription:
-      "Streaming data platform that ingests crowd sensor data via Kafka, runs ML inference for density and flow predictions, and visualises results in a live dashboard deployed on GCP.",
-    metric: "Real-time",
-    tags: ["Kafka", "Python", "GCP", "TensorFlow", "BigQuery"],
-    github: "https://github.com/tusharmishra/crowdlens", // TODO: update
+    id: "pulseforge",
+    name: "PulseForge",
+    description: "Event-driven backend platform",
+    longDescription: "A robust event-driven backend platform designed for high-performance, scalable applications with asynchronous processing.",
+    metric: "Backend Platform",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "JWT", "Async"],
+    github: "https://github.com/MenaceHecker/pulseforge",
+    featured: true,
   },
   {
-    id: "careersync",
-    name: "CareerSync / InboxIQ",
-    description:
-      "Intelligent career workflow automation — email parsing, CRM sync, and AI-driven job application tracking.",
-    longDescription:
-      "Two-part product: InboxIQ parses incoming recruiter emails and extracts structured data; CareerSync syncs that data into a Kanban-style job tracker with AI-generated follow-up suggestions.",
-    metric: "Automation",
-    tags: ["Node.js", "GPT-4", "Supabase", "Vercel", "TypeScript"],
-    github: "https://github.com/tusharmishra/careersync", // TODO: update
-    demo: "", // TODO: update
+    id: "mini-ml-platform",
+    name: "Mini ML Platform",
+    description: "End-to-end training + inference with MLflow registry",
+    longDescription: "A complete machine learning platform that handles model training, versioning, and production inference with MLflow integration.",
+    metric: "ML Platform",
+    tags: ["Python", "FastAPI", "MLflow", "scikit-learn"],
+    github: "https://github.com/MenaceHecker/mini-ml-platform",
+  },
+  {
+    id: "procuroid",
+    name: "Procuroid",
+    description: "Autonomous multi-agent procurement platform (AI ATL 2025 HM)",
+    longDescription: "An autonomous multi-agent system for procurement processes, featuring AI-driven decision making and automation.",
+    metric: "AI ATL 2025 Honorable Mention",
+    tags: ["Python", "Flask", "GCP", "Supabase", "Twilio", "ElevenLabs"],
+    github: "https://github.com/MenaceHecker/procuroid",
+  },
+  {
+    id: "movieit",
+    name: "movieIt (iOS)",
+    description: "Swift MVVM movie booking experience",
+    longDescription: "A native iOS application for movie booking with a clean MVVM architecture and seamless user experience.",
+    metric: "Mobile App",
+    tags: ["Swift", "iOS", "MVVM", "REST APIs"],
+    github: "https://github.com/MenaceHecker/movieit",
+  },
+  {
+    id: "crumb",
+    name: "Crumb",
+    description: "Realtime social app with NFC-based friend adding",
+    longDescription: "A real-time social application that uses NFC technology for instant friend connections and social interactions.",
+    metric: "Social App",
+    tags: ["React Native", "TypeScript", "Expo", "Supabase"],
+    github: "https://github.com/MenaceHecker/crumb",
   },
 ];
 
@@ -87,20 +105,28 @@ export type SkillCategory = {
 
 export const skillCategories: SkillCategory[] = [
   {
-    title: "Backend",
-    skills: ["Python / FastAPI", "Node.js", "REST / GraphQL", "Celery / Workers", "System Design"],
+    title: "Backend & Systems",
+    skills: ["Java (Spring Boot)", "Python (Flask, FastAPI)", "REST APIs", "Asynchronous Processing", "JWT & Role-Based Access Control", "System Design"],
   },
   {
-    title: "Cloud",
-    skills: ["AWS (Lambda, EC2, S3)", "GCP", "Docker / Kubernetes", "CI/CD Pipelines", "Terraform"],
+    title: "Cloud & Infrastructure",
+    skills: ["AWS (EC2, S3, Lambda, IAM, CloudWatch)", "Google Cloud Platform", "Docker", "Kubernetes (Kind / Minikube / EKS)", "CI/CD Pipelines", "Infrastructure Cost Optimization"],
   },
   {
-    title: "Databases",
-    skills: ["PostgreSQL", "Redis", "Supabase", "Kafka", "MongoDB"],
+    title: "Observability & Reliability",
+    skills: ["Prometheus", "Grafana", "ELK Stack", "Service Level Objectives (SLOs)", "Error Budgets", "Monitoring & Alerting"],
   },
   {
-    title: "AI / Tools",
-    skills: ["LLM APIs (GPT-4)", "LangChain", "TensorFlow", "Prompt Engineering", "Git / GitHub"],
+    title: "Machine Learning & Data",
+    skills: ["scikit-learn", "MLflow (Tracking & Registry)", "Model Training Pipelines", "Production Inference APIs", "Experiment Versioning"],
+  },
+  {
+    title: "Frontend & UI",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Browser Extensions", "Responsive UI Design"],
+  },
+  {
+    title: "Mobile Development",
+    skills: ["Swift (iOS)", "Kotlin (Android)", "MVVM Architecture", "React Native", "Expo", "Mobile REST Integrations"],
   },
 ];
 
@@ -113,17 +139,21 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    date: "2024 — Present",
-    role: "Backend / Cloud Engineer",
-    company: "Projects & Freelance",
-    description:
-      "Designed and shipped 4 production-grade systems spanning AI-powered platforms, real-time analytics, and cloud-native infrastructure.",
+    date: "Aug 2025 — Present",
+    role: "IT Engineer",
+    company: "Georgia Institute of Technology",
+    description: "Platform automation, internal tooling, reliability systems development and maintenance.",
   },
   {
-    date: "2022 — 2024",
-    role: "IT Support Specialist",
-    company: "Previous Role", // TODO: update company name
-    description:
-      "End-to-end infrastructure support, systems administration, and internal tooling — foundation for cloud and backend expertise.",
+    date: "Jun 2024 — Aug 2024",
+    role: "Software Engineer Intern",
+    company: "CRST International",
+    description: "Cloud services development, microservices architecture, observability implementation, and Kubernetes deployment.",
+  },
+  {
+    date: "Jan 2024 — May 2024",
+    role: "Lead Undergraduate Research Assistant",
+    company: "LSDIS Lab — University of Georgia",
+    description: "ML systems development, graph models research, AWS serverless architecture, and data engineering.",
   },
 ];

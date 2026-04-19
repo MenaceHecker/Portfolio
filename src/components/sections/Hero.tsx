@@ -57,8 +57,7 @@ export default function Hero() {
             variants={fadeUp}
             className="font-mono text-sm text-text-muted leading-relaxed max-w-[520px] mb-10"
           >
-            {siteConfig.role}. I architect systems that handle scale — from distributed
-            APIs to cloud-native deployments and AI-powered products.
+            {siteConfig.description}
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex items-center gap-3 flex-wrap">
