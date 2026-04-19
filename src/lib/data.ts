@@ -76,7 +76,7 @@ export const projects: Project[] = [
     longDescription: "An autonomous multi-agent system for procurement processes, featuring AI-driven decision making and automation.",
     metric: "AI ATL 2025 Honorable Mention",
     tags: ["Python", "Flask", "GCP", "Supabase", "Twilio", "ElevenLabs"],
-    github: "https://github.com/MenaceHecker/procuroid",
+    github: "https://github.com/avihhan/AIATL25",
   },
   {
     id: "movieit",
