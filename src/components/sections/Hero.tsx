@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { siteConfig, stats } from "@/lib/data";
 import MagneticButton from "@/components/ui/MagneticButton";
+import dynamic from "next/dynamic";
+
+const GlobeCanvas = dynamic(() => import("@/components/ui/GlobeCanvas"), { ssr: false });
 
 const stagger = {
   hidden: {},
