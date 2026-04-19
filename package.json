@@ -12,12 +12,14 @@
     "deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
+    "@types/three": "^0.184.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.3.0",
     "next": "15.5.2",
     "react": "^18",
     "react-dom": "^18",
-    "framer-motion": "^11.3.0",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^2.4.0"
+    "tailwind-merge": "^2.4.0",
+    "three": "^0.184.0"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.0",
