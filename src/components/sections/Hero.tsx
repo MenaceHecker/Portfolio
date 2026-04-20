@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { siteConfig, stats } from "@/lib/data";
+import { useCountUp } from "@/hooks/useCountUp";
 import MagneticButton from "@/components/ui/MagneticButton";
 import Typewriter from "@/components/ui/Typewriter";
 import dynamic from "next/dynamic";
@@ -17,6 +18,19 @@ const fadeUp = {
   hidden: { opacity: 0, y: 28 },
   show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } },
 };
+
+function StatCount({ value, label }: { value: number; label: string }) {
+  const { value: count, ref } = useCountUp(value);
+
+  return (
+    <div ref={ref}>
+      <div className="text-[26px] md:text-[28px] font-extrabold text-text-primary leading-none">
+        {count}+
+      </div>
+      <div className="font-mono text-[11px] text-text-dim mt-1 tracking-wider">{label}</div>
+    </div>
+  );
+}
 
 export default function Hero() {
   return (
@@ -110,16 +124,20 @@ export default function Hero() {
         transition={{ duration: 0.6, delay: 0.75, ease: "easeOut" }}
         className="grid grid-cols-2 sm:flex sm:flex-row gap-y-6 sm:gap-10 px-5 md:px-10 py-6 border-t border-b border-border-subtle"
       >
-        {stats.map((stat, i) => (
-          <div key={i}>
-            <div className="text-[26px] md:text-[28px] font-extrabold text-text-primary leading-none">
-              {stat.value}
+        {stats.map((stat, i) =>
+          typeof stat.value === "number" ? (
+            <StatCount key={i} value={stat.value} label={stat.label} />
+          ) : (
+            <div key={i}>
+              <div className="text-[26px] md:text-[28px] font-extrabold text-text-primary leading-none">
+                {stat.value}
+              </div>
+              <div className="font-mono text-[11px] text-text-dim mt-1 tracking-wider">
+                {stat.label}
+              </div>
             </div>
-            <div className="font-mono text-[11px] text-text-dim mt-1 tracking-wider">
-              {stat.label}
-            </div>
-          </div>
-        ))}
+          )
+        )}
       </motion.div>
     </section>
   );

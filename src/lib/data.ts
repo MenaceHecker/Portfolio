@@ -11,9 +11,9 @@ export const siteConfig = {
 };
 
 export const stats = [
-  { value: "7+", label: "featured projects" },
-  { value: "6+", label: "tech domains" },
-  { value: "15+", label: "technologies" },
+  { value: 7, label: "featured projects" },
+  { value: 6, label: "tech domains" },
+  { value: 15, label: "technologies" },
   { value: "∞", label: "systems to build" },
 ];
 
