@@ -90,12 +90,37 @@ export default function SplashScreen({
   const [ready, setReady] = useState(false);
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const [barShine, setBarShine] = useState(false);
+  const [isCompact, setIsCompact] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const reduceMotion = useMemo(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches ?? false;
+  const activeGridDots = useMemo(
+    () => (isCompact ? GRID_DOTS.filter((dot) => dot.col % 2 === 0 && dot.row % 2 === 0) : GRID_DOTS),
+    [isCompact],
+  );
+  const activeTraces = useMemo(() => (isCompact ? TRACES.slice(0, 6) : TRACES), [isCompact]);
+  const activeCodeCols = useMemo(() => (isCompact ? CODE_COLS.filter((_, i) => i % 2 === 0) : CODE_COLS), [isCompact]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const compactMedia = window.matchMedia("(max-width: 767px), (max-height: 760px), (pointer: coarse)");
+    const motionMedia = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const syncMedia = () => {
+      setIsCompact(compactMedia.matches);
+      setReduceMotion(motionMedia.matches);
+    };
+
+    syncMedia();
+    compactMedia.addEventListener?.("change", syncMedia);
+    motionMedia.addEventListener?.("change", syncMedia);
+
+    return () => {
+      compactMedia.removeEventListener?.("change", syncMedia);
+      motionMedia.removeEventListener?.("change", syncMedia);
+    };
   }, []);
 
   // once-per-session guard
@@ -117,6 +142,42 @@ export default function SplashScreen({
   useEffect(() => {
     const t = requestAnimationFrame(() => setReady(true));
     return () => cancelAnimationFrame(t);
+  }, []);
+
+  useEffect(() => {
+    if (typeof document === "undefined" || hidden) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const previousTouchAction = document.body.style.touchAction;
+
+    document.body.style.overflow = "hidden";
+    document.body.style.touchAction = "none";
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.body.style.touchAction = previousTouchAction;
+    };
+  }, [hidden]);
+
+  useEffect(() => {
+    if (typeof document === "undefined" || typeof window === "undefined") return;
+
+    const updateViewportHeight = () => {
+      const height = window.visualViewport?.height ?? window.innerHeight;
+      document.documentElement.style.setProperty("--tm-splash-vh", `${height}px`);
+    };
+
+    updateViewportHeight();
+    window.addEventListener("resize", updateViewportHeight);
+    window.addEventListener("orientationchange", updateViewportHeight);
+    window.visualViewport?.addEventListener("resize", updateViewportHeight);
+
+    return () => {
+      window.removeEventListener("resize", updateViewportHeight);
+      window.removeEventListener("orientationchange", updateViewportHeight);
+      window.visualViewport?.removeEventListener("resize", updateViewportHeight);
+      document.documentElement.style.removeProperty("--tm-splash-vh");
+    };
   }, []);
 
   // phase timer
@@ -143,7 +204,7 @@ export default function SplashScreen({
 
   // mouse parallax
   useEffect(() => {
-    if (reduceMotion) return;
+    if (reduceMotion || isCompact) return;
     const handleMouseMove = (e: MouseEvent) => {
       const cx = window.innerWidth / 2;
       const cy = window.innerHeight / 2;
@@ -153,7 +214,7 @@ export default function SplashScreen({
     };
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [reduceMotion]);
+  }, [isCompact, reduceMotion]);
 
   if (hidden) return null;
 
@@ -209,7 +270,7 @@ export default function SplashScreen({
           100% { top: 100%; opacity: 0; }
         }
         @keyframes tm-code-scroll {
-          0%   { transform: translateY(100vh); }
+          0%   { transform: translateY(var(--tm-splash-vh, 100vh)); }
           100% { transform: translateY(-100%); }
         }
         @keyframes tm-node-ping {
@@ -257,7 +318,7 @@ export default function SplashScreen({
           }}
           preserveAspectRatio="xMidYMid slice"
         >
-          {GRID_DOTS.map((dot) => (
+          {activeGridDots.map((dot) => (
             <circle
               key={dot.id}
               cx={dot.col * 10 + 5}
@@ -287,7 +348,7 @@ export default function SplashScreen({
           }}
           preserveAspectRatio="none"
         >
-          {TRACES.map((t) => (
+          {activeTraces.map((t) => (
             <g key={t.id}>
               <line
                 x1={t.x1} y1={t.y1}
@@ -325,14 +386,14 @@ export default function SplashScreen({
 
       {/* ── Scrolling code columns ── */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        {CODE_COLS.map((c) => (
+        {activeCodeCols.map((c) => (
           <div
             key={c.id}
             style={{
               position: "absolute",
               left: `${c.left}%`,
               top: 0,
-              width: "8%",
+              width: isCompact ? "12%" : "8%",
               height: "100%",
               overflow: "hidden",
             }}
@@ -340,7 +401,7 @@ export default function SplashScreen({
             <div
               style={{
                 fontFamily: "'SF Mono', 'Fira Code', 'Courier New', monospace",
-                fontSize: "9px",
+                fontSize: isCompact ? "8px" : "9px",
                 lineHeight: "1.6",
                 color: "rgba(59,130,246,0.9)",
                 opacity: c.opacity,
@@ -358,7 +419,7 @@ export default function SplashScreen({
       </div>
 
       {/* ── Scan line ── */}
-      {ready && (
+      {ready && !isCompact && (
         <div
           className="pointer-events-none absolute inset-x-0"
           style={{
@@ -404,7 +465,7 @@ export default function SplashScreen({
           position: "absolute", inset: "-50%",
           width: "200%", height: "200%",
           backgroundImage: "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E\")",
-          opacity: 0.045,
+          opacity: isCompact ? 0.025 : 0.045,
           mixBlendMode: "overlay",
           animation: "tm-grain-drift 0.18s steps(1) infinite",
         }} />
@@ -417,17 +478,27 @@ export default function SplashScreen({
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
+          width: "min(100%, 28rem)",
+          paddingInline: isCompact ? 20 : 0,
           transition: exiting
             ? "transform 700ms ease-in, opacity 700ms"
             : "transform 0.12s ease-out",
           transform: exiting
             ? "scale(0.97)"
-            : `perspective(700px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+            : isCompact
+              ? "none"
+              : `perspective(700px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
           opacity: exiting ? 0 : 1,
         }}
       >
         {/* ── MacBook Pro wireframe ── */}
-        <div style={{ position: "relative", width: 220, height: 160 }}>
+        <div
+          style={{
+            position: "relative",
+            width: isCompact ? "min(68vw, 220px)" : 220,
+            height: isCompact ? "min(49vw, 160px)" : 160,
+          }}
+        >
           <svg
             viewBox="0 0 220 160"
             fill="none"
@@ -558,7 +629,7 @@ export default function SplashScreen({
         </div>
 
         {/* ── Name: staggered letters ── */}
-        <div style={{ marginTop: 36, textAlign: "center" }}>
+        <div style={{ marginTop: isCompact ? 28 : 36, textAlign: "center", width: "100%" }}>
           <div style={{ position: "relative", overflow: "visible" }}>
             <div
               aria-label={NAME}
@@ -574,7 +645,7 @@ export default function SplashScreen({
                   key={key}
                   style={{
                     display: "inline-block",
-                    fontSize: "clamp(20px, 3.5vw, 26px)",
+                    fontSize: isCompact ? "clamp(22px, 7vw, 28px)" : "clamp(20px, 3.5vw, 26px)",
                     fontWeight: 600,
                     letterSpacing: "-0.01em",
                     color: "rgba(255,255,255,0.93)",
@@ -608,7 +679,7 @@ export default function SplashScreen({
           </div>
 
           {/* ── Subtitle: staggered letters ── */}
-          <div style={{ marginTop: 10, overflow: "hidden" }}>
+          <div style={{ marginTop: 10, overflow: "hidden", paddingInline: isCompact ? 4 : 0 }}>
             <div
               aria-label={SUBTITLE}
               style={{
@@ -622,9 +693,9 @@ export default function SplashScreen({
                   key={key}
                   style={{
                     display: "inline-block",
-                    fontSize: "clamp(10px, 1.5vw, 13px)",
+                    fontSize: isCompact ? "clamp(10px, 2.9vw, 12px)" : "clamp(10px, 1.5vw, 13px)",
                     color: "rgba(255,255,255,0.52)",
-                    letterSpacing: "0.22em",
+                    letterSpacing: isCompact ? "0.16em" : "0.22em",
                     textTransform: "uppercase",
                     whiteSpace: char === " " ? "pre" : undefined,
                     animation: ready
@@ -642,8 +713,8 @@ export default function SplashScreen({
 
         {/* ── Progress bar ── */}
         <div style={{
-          marginTop: 40,
-          width: 224,
+          marginTop: isCompact ? 28 : 40,
+          width: isCompact ? "min(78vw, 224px)" : 224,
           height: 2,
           borderRadius: 9999,
           background: "rgba(255,255,255,0.08)",
