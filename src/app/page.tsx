@@ -6,6 +6,7 @@ import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 import Experience from "@/components/sections/Experience";
+import Education from "@/components/sections/Education";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
 import SplashScreen from "@/components/ui/SplashScreen";
@@ -26,6 +27,7 @@ export default function Home() {
         <Projects />
         <Skills />
         <Experience />
+        <Education />
         <Contact />
         <Footer />
       </main>

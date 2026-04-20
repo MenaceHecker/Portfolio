@@ -34,7 +34,7 @@ const socialLinks = [
 export default function Contact() {
   return (
     <section id="contact" className="px-5 md:px-10 py-12 md:py-16 border-t border-border-subtle">
-      <SectionHeader index="04" label="contact" />
+      <SectionHeader index="05" label="contact" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

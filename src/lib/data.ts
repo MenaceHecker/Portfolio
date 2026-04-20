@@ -157,3 +157,19 @@ export const experiences: Experience[] = [
     description: "ML systems development, graph models research, AWS serverless architecture, and data engineering.",
   },
 ];
+
+export type Education = {
+  degree: string;
+  emphasis: string;
+  graduation: string;
+  institution: string;
+};
+
+export const education: Education[] = [
+  {
+    degree: "Bachelor of Science in Computer Science",
+    emphasis: "Artificial Intelligence",
+    graduation: "August 2025",
+    institution: "University of Georgia",
+  },
+];
