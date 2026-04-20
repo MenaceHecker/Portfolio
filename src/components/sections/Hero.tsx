@@ -89,9 +89,9 @@ export default function Hero() {
           </motion.div>
         </motion.div>
 
-        {/* Right — globe (hidden on mobile to save space) */}
+        {/* Right — globe (shown on all devices) */}
         <motion.div
-          className="hidden md:block w-[380px] flex-shrink-0 opacity-90"
+          className="block w-[240px] md:w-[380px] flex-shrink-0 opacity-90"
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 0.9, scale: 1 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}

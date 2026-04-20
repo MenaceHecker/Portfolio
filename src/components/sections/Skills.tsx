@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { skillCategories } from "@/lib/data";
 import SectionHeader from "@/components/ui/SectionHeader";
+import dynamic from "next/dynamic";
+
+const NodeGraph = dynamic(() => import("@/components/ui/NodeGraph"), { ssr: false });
 
 const container = {
   hidden: {},
