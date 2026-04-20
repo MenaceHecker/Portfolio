@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: ["backend engineer", "cloud infrastructure", "AI products", "Next.js", "AWS", "Python"],
   authors: [{ name: siteConfig.name }],
+  icons: {
+    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   openGraph: {
     title: siteConfig.name,
     description: siteConfig.description,

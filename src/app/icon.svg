@@ -1,0 +1,24 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="256" height="256" rx="64" fill="#050A16" />
+  <rect x="20" y="20" width="216" height="216" rx="44" stroke="url(#frame)" stroke-width="2" fill="url(#panel)" />
+  <path d="M76 86H180" stroke="url(#trace)" stroke-width="6" stroke-linecap="round" opacity="0.85" />
+  <path d="M76 170H150" stroke="url(#trace)" stroke-width="6" stroke-linecap="round" opacity="0.65" />
+  <circle cx="180" cy="86" r="7" fill="#4ECDC4" />
+  <circle cx="150" cy="170" r="7" fill="#4ECDC4" opacity="0.9" />
+  <path d="M92 78H117.928V170H104.344V91.22H92V78Z" fill="#F3F6FB" />
+  <path d="M137.492 78H171.224V89.344H151.076V116.032H169.336V127.324H151.076V170H137.492V78Z" fill="#4ECDC4" />
+  <defs>
+    <linearGradient id="panel" x1="40" y1="28" x2="222" y2="228" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#091224" />
+      <stop offset="1" stop-color="#08111C" />
+    </linearGradient>
+    <linearGradient id="frame" x1="36" y1="26" x2="232" y2="236" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4ECDC4" stop-opacity="0.75" />
+      <stop offset="1" stop-color="#3B82F6" stop-opacity="0.5" />
+    </linearGradient>
+    <linearGradient id="trace" x1="76" y1="86" x2="180" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3B82F6" stop-opacity="0.28" />
+      <stop offset="1" stop-color="#4ECDC4" />
+    </linearGradient>
+  </defs>
+</svg>
