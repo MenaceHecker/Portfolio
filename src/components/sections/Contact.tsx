@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { siteConfig } from "@/lib/data";
 import SectionHeader from "@/components/ui/SectionHeader";
 import MagneticButton from "@/components/ui/MagneticButton";
+import dynamic from "next/dynamic";
+
+const RadarRings = dynamic(() => import("@/components/ui/RadarRings"), { ssr: false });
 
 const socialLinks = [
   {
@@ -40,6 +43,8 @@ export default function Contact() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="relative rounded-xl border border-blue-border bg-blue-dim px-6 py-10 md:px-10 md:py-14 text-center overflow-hidden"
       >
+        <RadarRings />
+
         <div
           className="pointer-events-none absolute inset-0 opacity-10"
           style={{ background: "radial-gradient(ellipse at 50% 0%, #3B82F6 0%, transparent 70%)" }}
