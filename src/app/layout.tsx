@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { siteConfig } from "@/lib/data";
 import DotGrid from "@/components/ui/DotGrid";
+import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
+import PageTransition from "@/components/ui/PageTransition";
 import SpotlightCursor from "@/components/ui/SpotlightCursor";
 
 export const metadata: Metadata = {
@@ -24,6 +26,8 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className="noise-bg">
+        <ScrollProgressBar />
+        <PageTransition />
         <DotGrid />
         <SpotlightCursor />
         <div className="relative z-10">{children}</div>
