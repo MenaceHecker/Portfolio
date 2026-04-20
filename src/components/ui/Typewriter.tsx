@@ -17,6 +17,9 @@ export default function Typewriter({
   deletingSpeed = 35,
   pauseMs = 1800,
 }: TypewriterProps) {
+  const longestWord = words.reduce((longest, word) =>
+    word.length > longest.length ? word : longest, ""
+  );
   const [displayed, setDisplayed] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -47,9 +50,18 @@ export default function Typewriter({
   }, [displayed, isDeleting, isPaused, wordIndex, words, typingSpeed, deletingSpeed, pauseMs]);
 
   return (
-    <span className={className}>
-      {displayed}
-      <span className="inline-block w-[2px] h-[0.85em] bg-teal ml-0.5 align-middle animate-[pulse-dot_0.8s_ease-in-out_infinite]" />
+    <span className={`inline-grid align-baseline ${className}`}>
+      <span className="col-start-1 row-start-1 whitespace-pre-wrap break-words">
+        {displayed}
+        <span className="inline-block w-[2px] h-[0.85em] bg-current ml-0.5 align-middle animate-[pulse-dot_0.8s_ease-in-out_infinite]" />
+      </span>
+      <span
+        aria-hidden="true"
+        className="invisible col-start-1 row-start-1 whitespace-pre-wrap break-words"
+      >
+        {longestWord}
+        <span className="inline-block w-[2px] h-[0.85em] ml-0.5 align-middle" />
+      </span>
     </span>
   );
 }
