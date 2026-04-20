@@ -5,6 +5,9 @@ import { projects } from "@/lib/data";
 import SectionHeader from "@/components/ui/SectionHeader";
 import TechTag from "@/components/ui/TechTag";
 import GradientBorderCard from "@/components/ui/GradientBorderCard";
+import dynamic from "next/dynamic";
+
+const TiltCards = dynamic(() => import("@/components/ui/TiltCards"), { ssr: false });
 
 const container = {
   hidden: {},
@@ -20,6 +23,10 @@ export default function Projects() {
   return (
     <section id="projects" className="px-5 md:px-10 py-12 md:py-16 border-t border-border-subtle">
       <SectionHeader index="01" label="featured projects" />
+
+      <div className="mb-6 hidden md:block">
+        <TiltCards />
+      </div>
 
       <motion.div
         variants={container}
