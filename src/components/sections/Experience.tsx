@@ -3,16 +3,21 @@
 import { motion } from "framer-motion";
 import { experiences } from "@/lib/data";
 import SectionHeader from "@/components/ui/SectionHeader";
+import dynamic from "next/dynamic";
+
+const HelixTimeline = dynamic(() => import("@/components/ui/HelixTimeline"), { ssr: false });
 
 export default function Experience() {
   return (
     <section id="experience" className="px-5 md:px-10 py-12 md:py-16 border-t border-border-subtle">
       <SectionHeader index="03" label="experience" />
 
-      <div className="relative pl-7 md:pl-8">
-        <div className="absolute left-0 top-2 bottom-2 w-px bg-border-subtle" />
+      <div className="flex gap-6 md:gap-10 items-stretch">
+        <div className="hidden md:block w-16 flex-shrink-0">
+          <HelixTimeline />
+        </div>
 
-        <div className="space-y-8 md:space-y-10">
+        <div className="flex-1 space-y-8 md:space-y-10">
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
@@ -22,8 +27,6 @@ export default function Experience() {
               transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.1 }}
               className="relative"
             >
-              <div className="absolute -left-[1.875rem] md:-left-[2.375rem] top-1.5 w-2 h-2 rounded-full bg-blue border-2 border-bg-primary" />
-
               <div className="font-mono text-[11px] text-text-dim tracking-wider mb-1">
                 {exp.date}
               </div>
