@@ -22,36 +22,42 @@ export default function Skills() {
     <section id="skills" className="px-5 md:px-10 py-12 md:py-16 border-t border-border-subtle">
       <SectionHeader index="02" label="skills" />
 
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-        className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
-      >
-        {skillCategories.map((category) => (
-          <motion.div
-            key={category.title}
-            variants={item}
-            className="bg-bg-card border border-border-default rounded-xl p-4 md:p-5 hover:border-border-hover transition-colors duration-300"
-          >
-            <div className="font-mono text-[10px] text-blue tracking-widest uppercase mb-3 md:mb-4">
-              {category.title}
-            </div>
-            <ul className="space-y-2 md:space-y-2.5">
-              {category.skills.map((skill) => (
-                <li
-                  key={skill}
-                  className="flex items-center gap-2 font-mono text-[11px] md:text-[12px] text-text-muted"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-blue/50 flex-shrink-0" />
-                  {skill}
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-        ))}
-      </motion.div>
+      <div className="flex flex-col lg:flex-row items-start gap-8">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-80px" }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 flex-1"
+        >
+          {skillCategories.map((category) => (
+            <motion.div
+              key={category.title}
+              variants={item}
+              className="bg-bg-card border border-border-default rounded-xl p-4 md:p-5 hover:border-border-hover transition-colors duration-300"
+            >
+              <div className="font-mono text-[10px] text-blue tracking-widest uppercase mb-3 md:mb-4">
+                {category.title}
+              </div>
+              <ul className="space-y-2 md:space-y-2.5">
+                {category.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="flex items-center gap-2 font-mono text-[11px] md:text-[12px] text-text-muted"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-blue/50 flex-shrink-0" />
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        <div className="hidden lg:block w-[280px] flex-shrink-0 opacity-80">
+          <NodeGraph />
+        </div>
+      </div>
     </section>
   );
 }
