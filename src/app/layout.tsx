@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/data";
 import DotGrid from "@/components/ui/DotGrid";
 import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
 import PageTransition from "@/components/ui/PageTransition";
-import SpotlightCursor from "@/components/ui/SpotlightCursor";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 export const metadata: Metadata = {
   title: `${siteConfig.name} — ${siteConfig.role}`,
@@ -29,7 +29,7 @@ export default function RootLayout({
         <ScrollProgressBar />
         <PageTransition />
         <DotGrid />
-        <SpotlightCursor />
+        <CustomCursor />
         <div className="relative z-10">{children}</div>
       </body>
     </html>
