@@ -1,7 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Required for Cloudflare Pages deployment
-  // @ts-check
+  experimental: {
+    runtime: "edge",
+  },
 };
 
 module.exports = nextConfig;
