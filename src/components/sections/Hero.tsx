@@ -91,15 +91,13 @@ export default function Hero() {
 
             <MagneticButton
               as="a"
-              href={siteConfig.resume}
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#contact"
               strength={0.25}
               className="inline-flex items-center gap-2 px-5 md:px-6 py-3 bg-transparent text-text-secondary text-sm font-semibold rounded-md border border-border-default hover:border-blue-border hover:bg-blue-dim transition-all duration-200"
             >
-              Resume
+              Let&apos;s Build
               <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
               </svg>
             </MagneticButton>
           </motion.div>
