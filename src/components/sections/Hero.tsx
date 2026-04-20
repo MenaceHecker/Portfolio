@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { siteConfig, stats } from "@/lib/data";
 import MagneticButton from "@/components/ui/MagneticButton";
+import Typewriter from "@/components/ui/Typewriter";
 import dynamic from "next/dynamic";
 
 const GlobeCanvas = dynamic(() => import("@/components/ui/GlobeCanvas"), { ssr: false });
@@ -45,12 +46,13 @@ export default function Hero() {
             variants={fadeUp}
             className="text-[clamp(2rem,7vw,3.8rem)] font-extrabold leading-[1.07] tracking-tight text-text-primary mb-6"
           >
-            Building <span className="text-blue">scalable</span>
+            Building{" "}
+            <Typewriter
+              words={["scalable backends.", "cloud infra.", "AI products.", "distributed systems."]}
+              className="text-teal"
+            />
             <br />
-            backend systems,{" "}
-            <span className="text-text-muted/45">cloud &</span>
-            <br />
-            AI <span className="text-blue">infra</span>
+            <span className="text-text-muted/45">Engineered for scale.</span>
           </motion.h1>
 
           <motion.p
