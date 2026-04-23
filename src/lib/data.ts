@@ -6,7 +6,7 @@ export const siteConfig = {
     "I build cloud-native, event-driven systems and internal platforms with a focus on observability, performance, and production reliability.",
   email: "mtushar2508@gmail.com",
   github: "https://github.com/MenaceHecker",
-  linkedin: "https://https://www.linkedin.com/in/tushar-mishra-7960b722b/",
+  linkedin: "https://www.linkedin.com/in/tushar-mishra-7960b722b/",
   resume: "/resume.pdf",
 };
 
