@@ -41,16 +41,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    id: "inboxiq",
-    name: "InboxIQ",
-    description: "Intelligent email organizer",
-    longDescription: "An AI-powered email management system that intelligently categorizes, prioritizes, and organizes emails for better productivity.",
-    metric: "AI Product",
-    tags: ["Next.js", "TypeScript", "Prisma", "AWS"],
-    github: "https://github.com/MenaceHecker/inboxiq",
-    featured: true,
-  },
-  {
     id: "pulseforge",
     name: "PulseForge",
     description: "Event-driven backend platform",
