@@ -142,7 +142,7 @@ export const experiences: Experience[] = [
   },
   {
     date: "Jan 2024 — May 2024",
-    role: "Lead Undergraduate Research Assistant",
+    role: "Undergraduate Research Assistant",
     company: "LSDIS Lab — University of Georgia",
     description: "ML systems development, graph models research, AWS serverless architecture, and data engineering.",
   },
