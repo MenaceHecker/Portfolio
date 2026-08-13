@@ -11,7 +11,7 @@ export const siteConfig = {
 };
 
 export const stats = [
-  { value: 6, label: "featured projects" },
+  { value: 7, label: "featured projects" },
   { value: 6, label: "tech domains" },
   { value: 15, label: "technologies" },
   { value: "∞", label: "systems to build" },
@@ -30,6 +30,16 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "infergrid",
+    name: "InferGrid",
+    description: "Distributed ML inference platform on GKE",
+    longDescription: "A distributed ML inference platform built to handle production traffic, not just serve predictions. Requests are routed inline or to a Kafka-backed worker pool depending on in-flight load, with results delivered over WebSocket. A drift detector runs a KS-test against a baseline confidence distribution every 60 seconds to catch silent model degradation, and an Experiment Tracker service backed by PostgreSQL drives weighted A/B traffic splits with timeout-based fallback. Load tested to 200 concurrent users with zero failures across 67,963 requests — 699 RPS on the async path, sub-100ms p95 on the sync path up to 50 users.",
+    metric: "699 RPS · 0 failures @ 200 users",
+    tags: ["Python", "FastAPI", "Kubernetes", "Kafka", "Prometheus"],
+    github: "https://github.com/MenaceHecker/InferGrid",
+    featured: true,
+  },
   {
     id: "nexus",
     name: "Nexus",
