@@ -5,7 +5,7 @@
   "scripts": {
   "dev": "next dev",
   "build": "next build",
-  "build:cf": "npx @cloudflare/next-on-pages",
+  "build:cf": "echo 'Static export — out/ is produced by next build, no adapter step needed'",
   "start": "next start",
   "lint": "next lint"
 },
