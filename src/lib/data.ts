@@ -11,7 +11,7 @@ export const siteConfig = {
 };
 
 export const stats = [
-  { value: 7, label: "featured projects" },
+  { value: 8, label: "featured projects" },
   { value: 6, label: "tech domains" },
   { value: 15, label: "technologies" },
   { value: "∞", label: "systems to build" },
@@ -38,6 +38,16 @@ export const projects: Project[] = [
     metric: "699 RPS · 0 failures @ 200 users",
     tags: ["Python", "FastAPI", "Kubernetes", "Kafka", "Prometheus"],
     github: "https://github.com/MenaceHecker/InferGrid",
+    featured: true,
+  },
+  {
+    id: "vectorforge",
+    name: "VectorForge",
+    description: "Vector search engine built from scratch",
+    longDescription: "A vector search engine written from the ground up — the HNSW index, the on-disk format, and the query layer are all hand-built rather than wrapped around an existing library. A multi-layer Hierarchical Navigable Small World graph handles approximate nearest-neighbour search, with an exact brute-force index alongside it as ground truth so every recall number is measured, not assumed. It runs single-node or as a sharded cluster: a from-scratch consistent hash ring routes writes by vector id, and a coordinator fans searches across shards and merges the top-k. Adds metadata filtering during traversal, a versioned binary persistence format, REST and gRPC surfaces, and Prometheus-backed recall-versus-latency dashboards.",
+    metric: "0.97 recall@10 · 7.8ms p95",
+    tags: ["Python", "NumPy", "FastAPI", "gRPC", "Kubernetes"],
+    github: "https://github.com/MenaceHecker/VectorForge",
     featured: true,
   },
   {
