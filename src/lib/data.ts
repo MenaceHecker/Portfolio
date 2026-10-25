@@ -180,7 +180,13 @@ export type Experience = {
 
 export const experiences: Experience[] = [
   {
-    date: "Aug 2025 — Present",
+    date: "May 2026 — Present",
+    role: "IT Professional",
+    company: "University of Georgia",
+    description: "IT systems support, administration, and internal tooling.",
+  },
+  {
+    date: "Aug 2025 — May 2026",
     role: "IT Engineer",
     company: "Georgia Institute of Technology",
     description: "Platform automation, internal tooling, reliability systems development and maintenance.",
