@@ -42,6 +42,16 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "raftkv",
+    name: "RaftKV",
+    description: "Distributed key-value store on Raft, built from scratch",
+    longDescription: "A distributed key-value store on a from-scratch Raft implementation with no consensus library underneath: a deterministic consensus core, a hand-rolled write-ahead log, linearizable reads, and joint-consensus membership changes, tested with a linearizability-checked chaos suite.",
+    metric: "538 tests · race-clean · 23 chaos scenarios",
+    tags: ["Go", "Raft", "gRPC", "Prometheus", "Kubernetes"],
+    github: "https://github.com/MenaceHecker/RaftKV",
+    featured: true,
+  },
+  {
     id: "infergrid",
     name: "InferGrid",
     description: "Distributed ML inference platform on GKE",
