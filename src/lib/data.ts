@@ -11,7 +11,7 @@ export const siteConfig = {
 };
 
 export const stats = [
-  { value: 8, label: "featured projects" },
+  { value: 11, label: "featured projects" },
   { value: 6, label: "tech domains" },
   { value: 15, label: "technologies" },
   { value: "∞", label: "systems to build" },
@@ -30,6 +30,17 @@ export type Project = {
 };
 
 export const projects: Project[] = [
+  {
+    id: "sentra",
+    name: "Sentra",
+    description: "AI incident copilot with human-approved remediation",
+    longDescription: "An AI incident copilot that investigates outages through read-only tool calls over logs, metrics, and runbooks, then proposes an evidence-cited root cause. Side-effecting actions are only ever proposed; the approval gate is enforced in code, so nothing executes without a human sign-off.",
+    metric: "12/12 root causes · 0 gate bypasses",
+    tags: ["Python", "FastAPI", "Next.js", "PostgreSQL", "pgvector"],
+    github: "https://github.com/MenaceHecker/Sentra",
+    demo: "https://frontend-sable-six-42.vercel.app",
+    featured: true,
+  },
   {
     id: "infergrid",
     name: "InferGrid",
