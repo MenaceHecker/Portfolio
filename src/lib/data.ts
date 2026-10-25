@@ -52,6 +52,16 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    id: "clicklake",
+    name: "ClickLake",
+    description: "Serverless clickstream data lake on AWS",
+    longDescription: "A serverless AWS data lake for e-commerce clickstream events: batch and Kinesis ingestion into tiered S3 zones, Glue ETL to partitioned Parquet, Athena analytics, and the whole pipeline reproducible as one CDK stack under a tracked cost budget.",
+    metric: "97% less Athena data scanned",
+    tags: ["Python", "AWS", "Glue", "Athena", "CDK"],
+    github: "https://github.com/MenaceHecker/clickstream-datalake",
+    featured: true,
+  },
+  {
     id: "infergrid",
     name: "InferGrid",
     description: "Distributed ML inference platform on GKE",
